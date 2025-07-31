@@ -106,41 +106,51 @@ flutter build web --web-renderer canvaskit
 
 ### Deploy to GitHub Pages
 
-1. **Create a new repository** on GitHub
+#### Option 1: Automatic Deployment (Recommended)
 
-2. **Push your code**
+This repository includes a GitHub Actions workflow that automatically deploys your portfolio to GitHub Pages whenever you push to the main branch.
+
+1. **Push your code to GitHub**
    ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git branch -M main
-   git remote add origin https://github.com/yourusername/your-repo-name.git
-   git push -u origin main
+   git push origin main
    ```
 
-3. **Enable GitHub Pages**
-   - Go to your repository settings
-   - Navigate to "Pages" section
-   - Select "Deploy from a branch"
-   - Choose "main" branch and "/docs" folder
+2. **Enable GitHub Pages**
+   - Go to your repository on GitHub
+   - Navigate to Settings → Pages
+   - Under "Source", select "Deploy from a branch"
+   - Choose "gh-pages" branch and "/ (root)" folder
    - Click "Save"
 
-4. **Build and deploy**
-   ```bash
-   # Build the project
-   flutter build web
-   
-   # Copy build files to docs folder
-   mkdir docs
-   cp -r build/web/* docs/
-   
-   # Commit and push
-   git add docs/
-   git commit -m "Deploy to GitHub Pages"
-   git push
-   ```
+3. **Your site will be available at**: `https://yourusername.github.io/your-repo-name/`
 
-5. **Your site will be available at**: `https://yourusername.github.io/your-repo-name/`
+#### Option 2: Manual Deployment
+
+**Using the provided scripts:**
+
+**Windows:**
+```bash
+deploy.bat
+```
+
+**Linux/Mac:**
+```bash
+chmod +x deploy.sh
+./deploy.sh
+```
+
+**Manual steps:**
+1. Build the project: `flutter build web`
+2. Copy build files to `docs/` directory
+3. Commit and push to GitHub
+4. Enable GitHub Pages in repository settings
+
+#### Custom Domain (Optional)
+
+To use a custom domain:
+1. Add your domain to the `docs/CNAME` file
+2. Configure DNS settings with your domain provider
+3. Enable HTTPS in GitHub Pages settings
 
 ### Alternative: Deploy to Netlify
 
