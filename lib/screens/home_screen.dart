@@ -134,12 +134,31 @@ class HomeScreen extends StatelessWidget {
           CircleAvatar(
             radius: 60,
             backgroundColor: const Color(PortfolioData.accentColorValue),
-            child: Text(
-              PortfolioData.name.split(' ').map((e) => e[0]).join(''),
-              style: const TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-                color: Color(PortfolioData.primaryColorValue),
+            child: ClipOval(
+              child: Image.asset(
+                'assets/images/profile.jpg',
+                width: 120,
+                height: 120,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  // Try PNG if JPG fails
+                  return Image.asset(
+                    'assets/images/profile.png',
+                    width: 120,
+                    height: 120,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Text(
+                        PortfolioData.name.split(' ').map((e) => e[0]).join(''),
+                        style: const TextStyle(
+                          fontSize: 32,
+                          fontWeight: FontWeight.bold,
+                          color: Color(PortfolioData.primaryColorValue),
+                        ),
+                      );
+                    },
+                  );
+                },
               ),
             ),
           ),

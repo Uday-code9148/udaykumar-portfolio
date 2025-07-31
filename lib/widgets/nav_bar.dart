@@ -33,12 +33,31 @@ class NavBar extends StatelessWidget {
                     CircleAvatar(
                       radius: 40,
                       backgroundColor: const Color(PortfolioData.accentColorValue),
-                      child: Text(
-                        PortfolioData.name.split(' ').map((e) => e[0]).join(''),
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: Color(PortfolioData.primaryColorValue),
+                      child: ClipOval(
+                        child: Image.asset(
+                          'assets/images/profile.jpg',
+                          width: 80,
+                          height: 80,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            // Try PNG if JPG fails
+                            return Image.asset(
+                              'assets/images/profile.png',
+                              width: 80,
+                              height: 80,
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) {
+                                return Text(
+                                  PortfolioData.name.split(' ').map((e) => e[0]).join(''),
+                                  style: const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(PortfolioData.primaryColorValue),
+                                  ),
+                                );
+                              },
+                            );
+                          },
                         ),
                       ),
                     ),
@@ -89,12 +108,31 @@ class NavBar extends StatelessWidget {
                   CircleAvatar(
                     radius: 20,
                     backgroundColor: const Color(PortfolioData.accentColorValue),
-                    child: Text(
-                      PortfolioData.name.split(' ').map((e) => e[0]).join(''),
-                      style: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                        color: Color(PortfolioData.primaryColorValue),
+                    child: ClipOval(
+                      child: Image.asset(
+                        'assets/images/profile.jpg',
+                        width: 40,
+                        height: 40,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          // Try PNG if JPG fails
+                          return Image.asset(
+                            'assets/images/profile.png',
+                            width: 40,
+                            height: 40,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Text(
+                                PortfolioData.name.split(' ').map((e) => e[0]).join(''),
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(PortfolioData.primaryColorValue),
+                                ),
+                              );
+                            },
+                          );
+                        },
                       ),
                     ),
                   ),
