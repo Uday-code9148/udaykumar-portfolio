@@ -99,6 +99,12 @@ class ContactScreen extends StatelessWidget {
           'View my projects',
           PortfolioData.githubUrl,
         ),
+        _buildContactItem(
+          Icons.description,
+          'Resume',
+          'Download my resume',
+          'https://uday-code9148.github.io/udaykumar-portfolio/assets/images/resume.html',
+        ),
         const SizedBox(height: 32),
         _buildAvailabilityCard(),
       ],
